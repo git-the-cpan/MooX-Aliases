@@ -11,9 +11,11 @@ t/init_arg.t
 t/roles-init_arg.t
 t/roles.t
 t/traits.t
+xt/autoclean.t
 xt/clean.t
 xt/init-args-moose.t
 xt/moose-inherit.t
+xt/test-cleannamespaces.t
 META.yml                                 Module YAML meta-data (added by MakeMaker)
 META.json                                Module JSON meta-data (added by MakeMaker)
 README                                   README file (added by Distar)

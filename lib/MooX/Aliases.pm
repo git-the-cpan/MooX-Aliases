@@ -1,7 +1,7 @@
 package MooX::Aliases;
 use strictures 1;
 
-our $VERSION = '0.001005';
+our $VERSION = '0.001006';
 $VERSION = eval $VERSION;
 
 use Carp;
@@ -20,10 +20,12 @@ sub import {
       croak "Cannot find method $to to alias";
     }
 
-    no strict 'refs';
-    *{"${target}::${from}"} = sub {
-      goto &{$_[0]->can($to)};
-    };
+    eval qq{
+      sub ${target}::${from} {
+        goto &{\$_[0]->can("$to")};
+      };
+      1;
+    } or die "$@";
   };
 
   {
